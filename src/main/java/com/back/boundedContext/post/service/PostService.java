@@ -4,7 +4,7 @@ import com.back.boundedContext.member.entity.Member;
 import com.back.boundedContext.post.entity.Post;
 import com.back.boundedContext.post.repository.PostRepository;
 import com.back.global.EventPublisher.EventPublisher;
-import com.back.shared.dto.PostDto;
+import com.back.shared.post.dto.PostDto;
 import com.back.shared.post.event.PostCreatedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

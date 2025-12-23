@@ -1,4 +1,4 @@
-package com.back.shared.dto;
+package com.back.shared.post.dto;
 
 import com.back.boundedContext.post.entity.Post;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
-public class PostDto() {
+public class PostDto {
     private final int id;
     private final LocalDateTime createdAt;
     private final LocalDateTime updatedAt;
@@ -22,8 +22,8 @@ public class PostDto() {
                 post.getId(),
                 post.getCreateDate(),
                 post.getModifyDate(),
-                post.getAuthor.getId(),
-                post.getAuthor.getNickname(),
+                post.getAuthor().getId(),
+                post.getAuthor().getNickname(),
                 post.getTitle(),
                 post.getContent()
         );

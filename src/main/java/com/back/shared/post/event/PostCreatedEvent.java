@@ -1,6 +1,6 @@
 package com.back.shared.post.event;
 
-import com.back.shared.dto.PostDto;
+import com.back.shared.post.dto.PostDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -8,5 +8,4 @@ import lombok.Getter;
 @AllArgsConstructor
 public class PostCreatedEvent {
     private PostDto post;
-
 }
