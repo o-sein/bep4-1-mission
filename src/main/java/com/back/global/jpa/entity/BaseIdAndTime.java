@@ -13,9 +13,9 @@ import java.time.LocalDateTime;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
+@Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-@Getter
 public class BaseIdAndTime extends BaseEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
