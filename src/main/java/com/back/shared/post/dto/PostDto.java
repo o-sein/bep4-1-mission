@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class PostDto {
     private final int id;
-    private final LocalDateTime createdAt;
-    private final LocalDateTime updatedAt;
+    private final LocalDateTime createDate;
+    private final LocalDateTime modifyDate;
     private final int authorId;
     private final String authorName;
     private final String title;
