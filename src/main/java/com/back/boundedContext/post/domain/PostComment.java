@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
-@Table(name = "POST_COMMENT")
+@Table(name = "POST_POST_COMMENT")
 @NoArgsConstructor
 @Getter
 public class PostComment extends BaseIdAndTime {
