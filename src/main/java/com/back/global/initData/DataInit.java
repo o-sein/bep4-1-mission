@@ -3,7 +3,7 @@ package com.back.global.initData;
 import com.back.boundedContext.member.domain.Member;
 import com.back.boundedContext.post.domain.Post;
 import com.back.boundedContext.member.app.MemberFacade;
-import com.back.boundedContext.post.app.PostService;
+import com.back.boundedContext.post.app.PostFacade;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
@@ -16,12 +16,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class DataInit {
     private final DataInit self;
     private final MemberFacade memberFacade;
-    private final PostService postService;
+    private final PostFacade postService;
 
     public DataInit(
             @Lazy DataInit self,
             MemberFacade memberFacade,
-            PostService postService
+            PostFacade postService
     ) {
         this.self = self;
         this.memberFacade = memberFacade;
