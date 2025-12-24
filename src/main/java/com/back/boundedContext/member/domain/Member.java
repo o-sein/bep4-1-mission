@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "MEMBER")
+@Table(name = "MEMBER_MEMBER")
 @NoArgsConstructor
 @Getter
 public class Member extends BaseIdAndTime {
