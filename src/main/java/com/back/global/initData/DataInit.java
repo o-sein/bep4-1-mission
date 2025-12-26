@@ -4,6 +4,7 @@ import com.back.boundedContext.member.domain.Member;
 import com.back.boundedContext.post.domain.Post;
 import com.back.boundedContext.member.app.MemberFacade;
 import com.back.boundedContext.post.app.PostFacade;
+import com.back.boundedContext.post.domain.PostMember;
 import com.back.global.rsData.RsData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationRunner;
@@ -17,15 +18,17 @@ import org.springframework.transaction.annotation.Transactional;
 public class DataInit {
     private final DataInit self;
     private final MemberFacade memberFacade;
+    private final PostFacade postFacade;
     private final PostFacade postService;
 
     public DataInit(
             @Lazy DataInit self,
-            MemberFacade memberFacade,
+            MemberFacade memberFacade, PostFacade postFacade,
             PostFacade postService
     ) {
         this.self = self;
         this.memberFacade = memberFacade;
+        this.postFacade = postFacade;
         this.postService = postService;
     }
 
@@ -54,9 +57,9 @@ public class DataInit {
     public void makeBasePosts() {
         if (postService.count() > 0) return;
 
-        Member user1Member = memberFacade.findByUsername("user1").get();
-        Member user2Member = memberFacade.findByUsername("user2").get();
-        Member user3Member = memberFacade.findByUsername("user3").get();
+        PostMember user1Member = postFacade.findPostMemberByUsername("user1").get();
+        PostMember user2Member = postFacade.findPostMemberByUsername("user2").get();
+        PostMember user3Member = postFacade.findPostMemberByUsername("user3").get();
 
         RsData<Post> post1RsData = postService.write(user1Member, "제목1", "내용1");
         log.debug(post1RsData.getData().toString());
@@ -86,9 +89,9 @@ public class DataInit {
         Post post5 = postService.findById(5).get();
         Post post6 = postService.findById(6).get();
 
-        Member user1Member = memberFacade.findByUsername("user1").get();
-        Member user2Member = memberFacade.findByUsername("user2").get();
-        Member user3Member = memberFacade.findByUsername("user3").get();
+        PostMember user1Member = postFacade.findPostMemberByUsername("user1").get();
+        PostMember user2Member = postFacade.findPostMemberByUsername("user2").get();
+        PostMember user3Member = postFacade.findPostMemberByUsername("user3").get();
 
         if (post1.hasComments()) return;
 
