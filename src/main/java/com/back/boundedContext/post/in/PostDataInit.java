@@ -17,16 +17,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class PostDataInit {
     private final PostDataInit self;
     private final PostFacade postFacade;
-    private final PostFacade postService;
 
     public PostDataInit(
             @Lazy PostDataInit self,
-            PostFacade postFacade,
-            PostFacade postService
+            PostFacade postFacade
     ) {
         this.self = self;
         this.postFacade = postFacade;
-        this.postService = postService;
     }
 
     @Bean
@@ -40,39 +37,39 @@ public class PostDataInit {
 
     @Transactional
     public void makeBasePosts() {
-        if (postService.count() > 0) return;
+        if (postFacade.count() > 0) return;
 
         PostMember user1Member = postFacade.findMemberByUsername("user1").get();
         PostMember user2Member = postFacade.findMemberByUsername("user2").get();
         PostMember user3Member = postFacade.findMemberByUsername("user3").get();
 
-        RsData<Post> post1RsData = postService.write(user1Member, "제목1", "내용1");
+        RsData<Post> post1RsData = postFacade.write(user1Member, "제목1", "내용1");
         log.debug(post1RsData.getData().toString());
 
-        RsData<Post> post2RsData = postService.write(user1Member, "제목2", "내용2");
+        RsData<Post> post2RsData = postFacade.write(user1Member, "제목2", "내용2");
         log.debug(post2RsData.getData().toString());
 
-        RsData<Post> post3RsData = postService.write(user1Member, "제목3", "내용3");
+        RsData<Post> post3RsData = postFacade.write(user1Member, "제목3", "내용3");
         log.debug(post3RsData.getData().toString());
 
-        RsData<Post> post4RsData = postService.write(user2Member, "제목4", "내용4");
+        RsData<Post> post4RsData = postFacade.write(user2Member, "제목4", "내용4");
         log.debug(post4RsData.getData().toString());
 
-        RsData<Post> post5RsData = postService.write(user2Member, "제목5", "내용5");
+        RsData<Post> post5RsData = postFacade.write(user2Member, "제목5", "내용5");
         log.debug(post5RsData.getData().toString());
 
-        RsData<Post> post6RsData = postService.write(user3Member, "제목6", "내용6");
+        RsData<Post> post6RsData = postFacade.write(user3Member, "제목6", "내용6");
         log.debug(post6RsData.getData().toString());
     }
 
     @Transactional
     public void makeBasePostComments() {
-        Post post1 = postService.findById(1).get();
-        Post post2 = postService.findById(2).get();
-        Post post3 = postService.findById(3).get();
-        Post post4 = postService.findById(4).get();
-        Post post5 = postService.findById(5).get();
-        Post post6 = postService.findById(6).get();
+        Post post1 = postFacade.findById(1).get();
+        Post post2 = postFacade.findById(2).get();
+        Post post3 = postFacade.findById(3).get();
+        Post post4 = postFacade.findById(4).get();
+        Post post5 = postFacade.findById(5).get();
+        Post post6 = postFacade.findById(6).get();
 
         PostMember user1Member = postFacade.findMemberByUsername("user1").get();
         PostMember user2Member = postFacade.findMemberByUsername("user2").get();
